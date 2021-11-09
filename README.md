@@ -35,11 +35,11 @@ I use React, React Hooks, React Router and Axios for UI and http requests. I use
 
 # User-Password
 
-* userName : admin</br>
+* username : admin</br>
   password : admin
 
-* userName : mali</br>
+* username : mali</br>
   password : mali
 
-* userName : qwer</br>
+* username : qwer</br>
   password : qwer
