@@ -1,25 +1,53 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import { Button } from "semantic-ui-react";
 import { handleValidation } from "../../Utils/utils";
 import "./login.css";
 
 export default function Login() {
 
-    const [info, setInfo] = useState({ userName: "", password: "", status: "" })
+    const [info, setInfo] = useState({ userName: "", password: "", status: "", isLoading: false });
+
     let history = useHistory();
 
+    useEffect(() => {
+        setInfo({ ...info, userName: localStorage.getItem('UserName') });
+        setStatus();
+    }, [info.isLoading]);
+
+    const setStatus = () => {
+        if (localStorage.getItem('UserName')) {
+            setInfo({ ...info, status: `"${localStorage.getItem('UserName')}" is Logged in` });
+        }
+        else {
+            setInfo({ ...info, status: `Not logged in` });
+        }
+    }
+
     const postData = async () => {
+        setInfo({ ...info, isLoading: true });
+
+        if (localStorage.getItem('UserName')) {
+            alert(`You already logged in as "${localStorage.getItem('UserName')}" \nYou must logout first to login with a different user.`);
+            history.push('/homepage');
+            return;
+        }
+
         if (handleValidation(info)) {
-            setInfo({ status: "Loading..." });
-            await axios.post(process.env.REACT_APP_API_PATH + `/login`, {
-                userName: info.userName,
-                password: info.password
+            axios({
+                method: "post",
+                url: process.env.REACT_APP_API_PATH + `/login`,
+                timeout: 5000,
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: {
+                    userName: info.userName,
+                    password: info.password
+                }
             }).then((response) => {
-                setInfo({...info, status: "" });
                 if (response.data.success) {
-                    alert("Login Successfull!")
+                    alert("Login Successful!")
                     localStorage.setItem('UserName', info.userName);
                     history.push('/homepage');
                 }
@@ -27,7 +55,14 @@ export default function Login() {
                     console.error(response.data.errorMessage);
                     alert(response.data.errorMessage);
                 }
+                setStatus();
+            }).catch(error => {
+                alert(error);
+                console.log(error);
+                setInfo({ ...info, isLoading: false });
             });
+        } else {
+            setInfo({ ...info, isLoading: false });
         }
     };
 
@@ -37,6 +72,9 @@ export default function Login() {
 
     return (
         <div>
+            <div className='status_text'>
+                {info.status}
+            </div>
             <table className='table_create'>
                 <thead>
                     <tr className="tr_create">
@@ -48,9 +86,9 @@ export default function Login() {
                 <tbody>
                     <tr className="tr_create">
                         <td className="td_create" colSpan='2'>
-                            <label>UserName</label>
+                            <label>Username</label>
                             <input
-                                placeholder='UserName'
+                                placeholder='Username'
                                 onChange={(e) => setInfo({ ...info, userName: e.target.value })}
                             >
                             </input>
@@ -68,7 +106,7 @@ export default function Login() {
                     </tr>
                     <tr className="tr_create">
                         <td className="td_create">
-                            <button className='button_submit' type='submit' onClick={postData}>Submit</button>
+                            <button className='button_submit' type='submit' disabled={info.isLoading} onClick={() => postData()}>{info.isLoading ? "Loading..." : "Submit"}</button>
                         </td>
                         <td className="td_create">
                             <button className='button_cancel' onClick={redirectToWelcomePage}>Cancel</button>
@@ -76,7 +114,6 @@ export default function Login() {
                     </tr>
                 </tbody>
             </table>
-            <h3>{info.status}</h3>
         </div>
     )
 }

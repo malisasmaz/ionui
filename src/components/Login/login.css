@@ -96,6 +96,10 @@ input {
 	margin: 0px 0px;
 }
 
+.button_submit:hover {
+	background: rgb(1, 99, 1);
+}
+
 .button_cancel {
 	display: flex;
 	flex-direction: row;
@@ -118,6 +122,10 @@ input {
 	margin: 0px 0px;
 }
 
+.button_cancel:hover {
+	background: #e90000;
+}
+
 .td_create {
 	padding: 13px 30px;
 	background-color: var(--color-white);
@@ -125,4 +133,13 @@ input {
 
 .tr_create {
 	background-color: var(--color-white);
+}
+
+.status_text{
+	position: absolute; 
+	top: 0; 
+	right: 0; 
+	width: auto; 
+	text-align:right;
+	font-family: var(--font-family);
 }

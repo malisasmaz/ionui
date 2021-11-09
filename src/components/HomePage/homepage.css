@@ -25,6 +25,15 @@
 	margin: 10px 0px;
 }
 
-button:hover {
-	color: #008378;
+.button_logout:hover {
+	background: #3b3b3b;
+}
+
+.status_text{
+	position: absolute; 
+	top: 0; 
+	right: 0; 
+	width: auto; 
+	text-align:right;
+	font-family: var(--font-family);
 }

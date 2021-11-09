@@ -25,6 +25,15 @@
 	margin: 10px 0px;
 }
 
-button:hover {
+.button_login:hover {
 	color: #008378;
+}
+
+.status_text{
+	position: absolute; 
+	top: 0; 
+	right: 0; 
+	width: auto; 
+	text-align:right;
+	font-family: var(--font-family);
 }

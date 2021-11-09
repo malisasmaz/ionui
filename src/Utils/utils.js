@@ -4,12 +4,12 @@ export const handleValidation = (req) => {
 
     if (!req.userName) {
         formIsValid = false;
-        errors["UserName"] = "Cannot be empty";
+        errors["Username"] = "Cannot be empty";
     }
     else if (typeof req.userName !== "undefined") {
         if (!req.userName.match(/^[^\\\/,.^]+$/)) {
             formIsValid = false;
-            errors["UserName"] = "Can not contain these characters: \\/,.^";
+            errors["Username"] = "Can not contain these characters: \\/,.^";
         }
     }
 
@@ -18,7 +18,7 @@ export const handleValidation = (req) => {
         errors["Password"] = "Cannot be empty";
     }
     else if (typeof req.password !== "undefined") {
-        if (!req.password.match(/^[a-zA-Z]+$/)) {
+        if (!req.password.match(/^[^\\\/,.^]+$/)) {
             formIsValid = false;
             errors["Password"] = "Can not contain these characters: \\/,.^";
         }
