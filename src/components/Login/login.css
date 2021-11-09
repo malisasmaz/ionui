@@ -1,0 +1,128 @@
+@import "../../vars.css";
+
+.table_create {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	height: auto;
+	width: auto;
+	left: 124px;
+	right: 124px;
+	top: 204px;
+	background: var(--color-white);
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
+	border-radius: 8px;
+}
+
+label {
+	position: static;
+	width: 85px;
+	height: 20px;
+	left: 0px;
+	top: 0px;
+	font-family: var(--font-family);
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 20px;
+	color: #374151;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin: 4px 0px;
+}
+
+input {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 9px 13px;
+	position: static;
+	width: auto;
+	height: 38px;
+	left: 0px;
+	top: 24px;
+	background: var(--color-white);
+	border: 1px solid #D1D5DB;
+	box-sizing: border-box;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+	border-radius: 6px;
+	flex: none;
+	order: 1;
+	flex-grow: 0;
+	margin: 4px 0px;
+}
+
+.h2_create {
+	position: static;
+	width: auto;
+	height: 24px;
+	left: 0px;
+	top: 0px;
+	font-family: var(--font-family);
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 24px;
+	color: #111827;
+	flex: none;
+	order: 0;
+	align-self: stretch;
+	flex-grow: 0;
+	margin: 4px 0px;
+	padding: 24px 0px;
+}
+
+.button_submit {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 9px 17px;
+	position: static;
+	width: 67px;
+	height: 38px;
+	left: 972px;
+	top: 12px;
+	background: green;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+	border-radius: 6px;
+	border: 2px solid green;
+	color: #FFFFFF;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin: 0px 0px;
+}
+
+.button_cancel {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 9px 17px;
+	position: static;
+	width: 67px;
+	height: 38px;
+	left: 972px;
+	top: 12px;
+	background: red;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+	border-radius: 6px;
+	border: 2px solid red;
+	color: #FFFFFF;
+	flex: none;
+	order: 0;
+	flex-grow: 0;
+	margin: 0px 0px;
+}
+
+.td_create {
+	padding: 13px 30px;
+	background-color: var(--color-white);
+}
+
+.tr_create {
+	background-color: var(--color-white);
+}
