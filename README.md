@@ -31,3 +31,15 @@ npm run test
 I use React, React Hooks, React Router and Axios for UI and http requests. I used jest and react-testing-library
 
 1. I use Axios to make HTTP request to the API([ionapi](https://github.com/malisasmaz/ionapi))
+
+
+# User-Password
+
+* userName : admin
+  password : admin
+
+* userName : mali
+  password : mali
+
+* userName : qwer
+  password : qwer
