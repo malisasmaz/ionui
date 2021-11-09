@@ -12,10 +12,10 @@ export default function Login() {
 
     useEffect(() => {
         setInfo({ ...info, userName: localStorage.getItem('UserName') });
-        setStatus();
+        handleStatus();
     }, [info.isLoading]);
 
-    const setStatus = () => {
+    const handleStatus = () => {
         if (localStorage.getItem('UserName')) {
             setInfo({ ...info, status: `"${localStorage.getItem('UserName')}" is Logged in` });
         }
@@ -55,7 +55,7 @@ export default function Login() {
                     console.error(response.data.errorMessage);
                     alert(response.data.errorMessage);
                 }
-                setStatus();
+                handleStatus();
             }).catch(error => {
                 alert(error);
                 console.log(error);
